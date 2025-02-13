@@ -1,11 +1,8 @@
-# Dynamic Sketchpad
+# Interactive Sketchpad
 
 ## Dependencies
-To create a venv do:
-`uv venv`
-
-To install dependencies do:
-`uv pip install -r pyproject.toml`
+1. Install uv https://docs.astral.sh/uv/getting-started/installation/
+2. Run `uv sync` to install dependencies
 
 ## Running Interactive Sketchpad
 To run interactive sketchpad, do:
