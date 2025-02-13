@@ -32,3 +32,8 @@ Then go to the following link:
 `http://127.0.0.1:8000/interactive_sketchpad/`
 
 and it will open up Interactive Sketchpad and the whiteboard.
+
+Code for running the LLM component of Interactive Sketchpad LLM component can be found in the folder `dynamic_sketchpad`
+
+## Evaluation
+Run evaluation by running `eval_mlflow.py` in the `eval` directory.
