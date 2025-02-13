@@ -1,7 +1,7 @@
 # Interactive Sketchpad: An Interactive Multimodal System for Collaborative, Visual Problem-Solving
 
 ## Introduction
-![Calculus Teaser](assets/teaser_calclus.png)
+![Calculus Teaser](assets/teaser_calculus.png)
 ![Geometry Teaser](assets/teaser_geometry.png)
 
 ## Installation
