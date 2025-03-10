@@ -84,7 +84,7 @@ Let's draw a series of diagrams traversing through the graph and finding a cycle
 </Tutor>
 
 You should only give the solution if the student explicitly asks for it.
-ALWAYS wrap maths in $$ tags only. DO NOT under any circumstances give parentheses or square brackets
+ALWAYS write math in $ dollar signs for latex rendering, for example $\sinx$
 """
 
 assistant = sync_openai_client.beta.assistants.create(
@@ -261,18 +261,14 @@ async def main(message: cl.Message):
     attachments = await process_files(message.elements)
     await append_images_to_message(message)
 
-    latex_message = {
-        "type": "text",
-        "text": "Always wrap math in $$ dolar signs for latex rendering",
-    }
     visualize_message = {
         "type": "text",
-        "text": "Visualize using Code Interpreter if you think it would be helpful",
+        "text": "Visualize using Code Interpreter if you think it would be helpful, write math in $ dollar signs $",
     }
     oai_message = await async_openai_client.beta.threads.messages.create(
         thread_id=thread_id,
         role="user",
-        content=message.content + [latex_message, visualize_message],
+        content=message.content + [visualize_message],
         attachments=attachments,
     )
 
