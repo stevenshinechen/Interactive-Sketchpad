@@ -3,6 +3,7 @@ import os
 import subprocess
 from io import BytesIO
 from pathlib import Path
+import time
 from typing import List
 
 import chainlit as cl
@@ -169,16 +170,21 @@ class EventHandler(AsyncAssistantEventHandler):
         self.current_step.end = utc_now()
         await self.current_step.update()
 
-    async def on_image_file_done(self, image_file):
+    async def on_image_file_done(self, image_file, show_image: bool = False):
         image_id = image_file.file_id
         response = await async_openai_client.files.with_raw_response.content(image_id)
-        image_element = cl.Image(
-            name=image_id, content=response.content, display="inline", size="large"
-        )
-        if not self.current_message.elements:
-            self.current_message.elements = []
-        self.current_message.elements.append(image_element)
-        await self.current_message.update()
+
+        if show_image:
+            # Show image in chatbot interface
+            image_element = cl.Image(
+                name=image_id, content=response.content, display="inline", size="large"
+            )
+            if not self.current_message.elements:
+                self.current_message.elements = []
+            self.current_message.elements.append(image_element)
+            await self.current_message.update()
+        
+        # Send image to whiteboard
         await send_image_to_canvas(response.content)
 
 
